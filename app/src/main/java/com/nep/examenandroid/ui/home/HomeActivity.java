@@ -1,5 +1,6 @@
 package com.nep.examenandroid.ui.home;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
@@ -10,12 +11,11 @@ import android.util.Log;
 import android.view.View;
 
 import com.nep.examenandroid.R;
+import com.nep.examenandroid.data.dto.employees.Employee;
 import com.nep.examenandroid.data.repositories.Repo;
 import com.nep.examenandroid.databinding.ActivityHomeBinding;
-import com.nep.examenandroid.ui.auth.AuthViewModel;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -32,7 +32,6 @@ public class HomeActivity extends AppCompatActivity {
         repository = new Repo();
         factory = new HomeActivityViewModelFactory(repository);
         viewModel = ViewModelProviders.of(HomeActivity.this, factory).get(HomeActivityViewModel.class);
-
         binding.btnColaboradores.setOnClickListener(colaboradores);
         binding.btnAgregar.setOnClickListener(addColaborador);
 
@@ -75,8 +74,18 @@ public class HomeActivity extends AppCompatActivity {
         public void onClick(View view) {
             Intent intent = new Intent();
             intent.setClass(HomeActivity.this, AddActivity.class);
-            startActivity(intent);
+            startActivityForResult(intent,200);
+//            startActivity(intent);
         }
     };
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_OK && requestCode == 200){
+           Employee persona = data.getParcelableExtra("persona");
+            viewModel.getMutListUser().getValue().add(persona);
+        }
+
+    }
 }

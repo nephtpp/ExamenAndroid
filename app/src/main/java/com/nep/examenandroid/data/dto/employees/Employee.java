@@ -21,6 +21,8 @@ public class Employee implements Parcelable {
     @Expose
     private String mail;
 
+    public Employee() {
+    }
 
     protected Employee(Parcel in) {
         id = in.readString();

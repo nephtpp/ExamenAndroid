@@ -33,12 +33,18 @@
 
         <activity
             android:name=".ui.home.MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
-        <activity android:name=".ui.home.ListColaboradoresActivity" />
-        <activity android:name=".ui.home.AddActivity" />
-        <activity android:name=".ui.home.MapActivity" />
-        <activity android:name=".ui.home.HomeActivity" />
-        <activity android:name=".ui.auth.MainActivity">
+            android:label="@string/title_activity_maps"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".ui.home.ListColaboradoresActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.home.AddActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.home.MapActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.home.HomeActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.auth.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

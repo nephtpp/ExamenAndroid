@@ -14,6 +14,11 @@ public class Location implements Parcelable {
     @Expose
     private String log;
 
+    public Location(String lat, String log) {
+        this.lat = lat;
+        this.log = log;
+    }
+
     protected Location(Parcel in) {
         lat = in.readString();
         log = in.readString();
